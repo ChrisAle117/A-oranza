@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Leaf, Wheat, Sparkles, Package, Tag, Flame } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -329,6 +329,18 @@ function MenuCard({ item }: { item: MenuItem }) {
 export function MenuSection() {
   const [activeCategory, setActiveCategory] = useState(0);
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
+
+  useEffect(() => {
+    if (!sliderRef) {
+      return;
+    }
+
+    const resizeTimer = window.setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 0);
+
+    return () => window.clearTimeout(resizeTimer);
+  }, [sliderRef, activeCategory]);
 
   const sliderSettings = {
     dots: false,

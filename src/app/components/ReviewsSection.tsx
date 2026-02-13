@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Star } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -46,6 +46,18 @@ const reviews = [
 
 export function ReviewsSection() {
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
+
+  useEffect(() => {
+    if (!sliderRef) {
+      return;
+    }
+
+    const resizeTimer = window.setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 0);
+
+    return () => window.clearTimeout(resizeTimer);
+  }, [sliderRef]);
 
   const sliderSettings = {
     dots: true,
