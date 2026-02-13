@@ -494,13 +494,17 @@ export function MenuSection() {
       </div>
 
       <style>{`
-        .menu-carousel .slick-slide > div {
-          height: 100%;
+        .menu-carousel .slick-slide {
+          height: auto;
         }
-        
+
+        .menu-carousel .slick-slide > div {
+          height: auto;
+        }
+
         .menu-carousel .slick-track {
           display: flex;
-          align-items: stretch;
+          align-items: flex-start;
         }
       `}</style>
     </section>

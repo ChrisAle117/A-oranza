@@ -175,7 +175,7 @@ export function ReviewsSection() {
             {reviews.map((review, index) => (
               <div key={index} className="px-3">
                 <div
-                  className="p-8 rounded-[24px] h-full"
+                  className="p-8 rounded-[24px] h-auto"
                   style={{
                     backgroundColor: '#E8DFD2',
                     boxShadow: '0 4px 20px rgba(47, 69, 56, 0.15)',
@@ -259,13 +259,17 @@ export function ReviewsSection() {
           opacity: 1;
         }
         
-        .reviews-carousel .slick-slide > div {
-          height: 100%;
+        .reviews-carousel .slick-slide {
+          height: auto;
         }
-        
+
+        .reviews-carousel .slick-slide > div {
+          height: auto;
+        }
+
         .reviews-carousel .slick-track {
           display: flex;
-          align-items: stretch;
+          align-items: flex-start;
         }
       `}</style>
     </section>
